@@ -68,12 +68,12 @@ export default function App() {
         handleCheck={handleCheck}
       ></Table>
       {cards.find((item) => item.checked === false) ? (
-        <div>Количество ходов {counter}</div>
+        <div>Steps {counter}</div>
       ) : (
         <div>
-          Количество ходов {counter}
+          Steps {counter}
           <div>
-            <button onClick={() => newGame()}>Начать заново ?</button>
+            <button onClick={() => newGame()}>New game</button>
           </div>
         </div>
       )}
