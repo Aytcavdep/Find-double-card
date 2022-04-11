@@ -11,11 +11,12 @@ export default function App() {
   const [delayClick, setDelayClick] = useState(false);
 
   const newGame = () => {
-    setCards(cardDeck.sort((a, b) => a.id - b.id));
+    setCards(cardDeck.sort(() => Math.random() - 0.5));
     setCounter(0);
+    console.table(cards);
   };
   useEffect(() => {
-    setCards(cardDeck.sort((a, b) => a.id - b.id));
+    setCards(cardDeck.sort(() => Math.random() - 0.5));
   }, []);
 
   const handleCheck = (id, set) => {
