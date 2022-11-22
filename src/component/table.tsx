@@ -1,8 +1,26 @@
 import "../styles.css";
-import { SvgSelector } from "./svgSelector";
+import { SvgSelector } from "../assets/svgSelector";
+import { CardDeckType } from "./cardDeck";
+import React from "react";
 
-export const Table = ({ cards, handleCheck }) => {
-  const handleClick = (id, set) => {
+//кастомный атрибут
+declare module "react" {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    // extends React's HTMLAttributes
+    disabled?: boolean;
+  }
+}
+
+type Tabletype = {
+  cards: CardDeckType[];
+  handleCheck: (id: number, set: number) => void;
+};
+
+export const Table: React.FC<Tabletype> = ({
+  cards,
+  handleCheck
+}: Tabletype) => {
+  const handleClick = (id: number, set: number) => {
     handleCheck(id, set);
   };
 

@@ -1,25 +1,25 @@
 import "./styles.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "./component/table";
-import { cardDeck } from "./component/cardDeck";
+import { cardDeck, CardDeckType } from "./component/cardDeck";
 
-export default function App() {
-  const [cards, setCards] = useState([{}]);
-  const [setCheck, setSet] = useState([]);
-  const [oldId, setOldId] = useState([]);
+export const App: React.FC = () => {
+  const [cards, setCards] = useState<CardDeckType[] | []>([]);
+  const [setCheck, setSetCheck] = useState<number>(0);
+  const [oldId, setOldId] = useState<number>(-1);
   const [counter, setCounter] = useState(0);
   const [delayClick, setDelayClick] = useState(false);
 
   const newGame = () => {
     setCards(cardDeck.sort(() => Math.random() - 0.5));
     setCounter(0);
-    console.table(cards);
+    // console.table(cards);
   };
   useEffect(() => {
     setCards(cardDeck.sort(() => Math.random() - 0.5));
   }, []);
 
-  const handleCheck = (id, set) => {
+  const handleCheck = (id: number, set: number) => {
     setCounter(counter + 1);
     setCards([
       ...cards.map((card) =>
@@ -27,26 +27,28 @@ export default function App() {
       )
     ]);
 
-    if (!oldId.length) {
+    if (oldId === -1) {
       setOldId(id);
     }
-    if (setCheck.includes(set) && oldId !== id) {
-      setCards([
-        ...cards.map((card) =>
+    if (setCheck === set && oldId !== id) {
+      setCards((prev) => [
+        ...prev.map((card) =>
           card.setNumber === set
             ? { ...card, disabled: true, checked: true }
             : { ...card }
         )
       ]);
-      setSet([]);
-      setOldId([]);
-    } else if (setCheck.length === 1) {
+      setSetCheck(0);
+      setOldId(-1);
+    } else if (setCheck !== 0) {
       setDelayClick(true);
       const delay = () => {
         setDelayClick(false);
         setCards([
           ...cards.map((card) =>
-            card.setNumber === (setCheck[0] || set)
+            card.setNumber === setCheck
+              ? { ...card, checked: false }
+              : card.setNumber === set
               ? { ...card, checked: false }
               : { ...card }
           )
@@ -54,19 +56,16 @@ export default function App() {
       };
       setTimeout(delay, 800);
 
-      setSet([]);
-      setOldId([]);
+      setSetCheck(0);
+      setOldId(-1);
+    } else if (setCheck === 0) {
+      setSetCheck(set);
     }
-    setCheck.push(set);
   };
 
   return (
     <div className="App" disabled={delayClick}>
-      <Table
-        cards={cards}
-        setCards={setCards}
-        handleCheck={handleCheck}
-      ></Table>
+      <Table cards={cards} handleCheck={handleCheck}></Table>
       {cards.find((item) => item.checked === false) ? (
         <div>Steps {counter}</div>
       ) : (
@@ -79,4 +78,4 @@ export default function App() {
       )}
     </div>
   );
-}
+};
