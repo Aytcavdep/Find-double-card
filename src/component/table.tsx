@@ -1,4 +1,4 @@
-import "../styles.css";
+import "../pages/GameFindDoubleCard.css";
 import { SvgSelector } from "../assets/svgSelector";
 import { CardDeckType } from "./cardDeck";
 import React from "react";
