@@ -1,9 +1,15 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+}
 .container {
   display: grid;
-  gap: 30px;
+  gap: 5px;
   border: 2px solid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 30px;
+  padding: 5px;
   justify-items: center;
   align-items: center;
   margin-bottom: 10px;
@@ -12,11 +18,10 @@
   background: rgb(8, 174, 207);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 666px) {
   .container {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 5px;
-    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    /*grid-template-columns: repeat(3, 1fr);*/
   }
 }
 .no_check,
@@ -27,6 +32,7 @@
   height: 110px;
   width: 110px;
   align-items: center;
+  justify-items: center;
   background-color: aqua;
   cursor: pointer;
   border-radius: 50%;
@@ -52,9 +58,19 @@ div.check[disabled] {
   opacity: 0.7;
   background-color: rgb(64, 221, 85);
 }
+
 button,
 .button_GoHome {
-  margin-top: 10px;
+  display: grid;
+  text-align: center;
+  border: solid 2px #fff;
+  border-radius: 0.8rem;
+  align-content: center;
+  background-color: rgb(109, 109, 109);
+  width: 100px;
+  height: 30px;
+  margin: 10px 0;
+  color: #fff;
   cursor: pointer;
   box-shadow: inset rgba(0, 0, 0, 0.6) 0 -3px 8px,
     inset rgba(252, 255, 255, 0.7) 0 3px 8px, rgba(0, 0, 0, 0.8) 0 3px 8px -3px;
@@ -65,23 +81,25 @@ button:hover,
   background: rgba(0, 212, 255, 1);
 }
 
-.button_GoHome {
-  display: grid;
-  text-align: center;
-  border: solid 2px #fff;
-  border-radius: 0.8rem;
-  align-content: center;
-  background-color: rgb(109, 109, 109);
-  width: 150px;
-  height: 50px;
-  margin-left: auto;
-  margin-bottom: 20px;
-  color: #fff;
-}
 .button_GoHome > a {
   color: #fff;
   text-decoration: none;
-  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.steps_counter {
+  display: grid;
+  text-align: center;
+  border: solid 2px #000;
+  border-radius: 10px;
+  align-content: center;
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 30px;
+  margin: 10px 0;
+  user-select: none;
+  color: #000;
+  box-shadow: inset rgba(0, 0, 0, 0.6) 0 -3px 8px,
+    inset rgba(252, 255, 255, 0.7) 0 3px 8px, rgba(0, 0, 0, 0.8) 0 3px 8px -3px;
 }
 
 div.App[disabled] {

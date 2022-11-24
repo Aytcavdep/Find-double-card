@@ -66,20 +66,21 @@ export const GameFindDoubleCard: React.FC = () => {
 
   return (
     <div className="App" disabled={delayClick}>
-      <div className="button_GoHome">
-        <Link to={"/"}>Go home</Link>
-      </div>
-      <Table cards={cards} handleCheck={handleCheck}></Table>
-      {cards.find((item) => item.checked === false) ? (
-        <div>Steps {counter}</div>
-      ) : (
-        <div>
-          Steps {counter}
+      <div className="header">
+        {cards.find((item) => item.checked === false) ? (
+          <div></div>
+        ) : (
           <div>
             <button onClick={() => newGame()}>New game</button>
           </div>
+        )}
+        <div className="steps_counter">Steps {counter}</div>
+        <div className="button_GoHome">
+          <Link to={"/"}>Go home</Link>
         </div>
-      )}
+      </div>
+
+      <Table cards={cards} handleCheck={handleCheck}></Table>
     </div>
   );
 };
