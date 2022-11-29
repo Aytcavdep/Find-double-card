@@ -1,0 +1,14 @@
+.game_start_rules {
+  display: grid;
+  text-align: center;
+  border: solid 2px #fff;
+  border-radius: 0.8rem;
+  align-content: center;
+
+  height: 30px;
+  margin: 10px 0;
+  padding: 0 3px;
+  color: red;
+  box-shadow: inset rgba(0, 0, 0, 0.6) 0 -3px 8px,
+    inset rgba(252, 255, 255, 0.7) 0 3px 8px, rgba(0, 0, 0, 0.8) 0 3px 8px -3px;
+}

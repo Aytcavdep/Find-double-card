@@ -1,0 +1,10 @@
+.winn {
+  height: 100vh;
+  grid-template-columns: 1fr;
+  font-size: 24px;
+  font-weight: 700;
+}
+.winner_button {
+  display: grid;
+  justify-items: center;
+}

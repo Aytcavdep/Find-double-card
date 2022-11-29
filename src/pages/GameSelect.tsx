@@ -12,6 +12,9 @@ export const GameSelect: React.FC = () => {
         <div className="double_card">
           <Link to={"/find_double_card"}>Find double card</Link>
         </div>
+        <div className="letter">
+          <Link to={"/find_letter"}>Find letter</Link>
+        </div>
       </div>
     </div>
   );

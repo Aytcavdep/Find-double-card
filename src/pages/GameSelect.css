@@ -6,7 +6,8 @@
 }
 
 .conteiner_board,
-.double_card {
+.double_card,
+.letter {
   font-family: "Dancing Script", cursive;
   background-color: rgb(109, 109, 109);
   color: #fff;
@@ -69,7 +70,8 @@ h1 {
   }
 }
 
-.double_card > a {
+.double_card > a,
+.letter > a {
   text-decoration: none;
   font-size: 3rem;
   color: #fff;
@@ -78,4 +80,9 @@ h1 {
 .double_card:hover {
   text-decoration: underline;
   background: rgba(0, 212, 255, 1);
+}
+
+.letter:hover {
+  text-decoration: underline;
+  background: rgb(146, 137, 55);
 }
