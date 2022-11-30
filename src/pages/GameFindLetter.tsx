@@ -3,6 +3,7 @@ import "./GameFindLetter.css";
 import { AlphabetTable } from "../component/findLetter/AlphabetTable";
 import { AlphabetType } from "./GameFindLetterContainer";
 import { Link } from "react-router-dom";
+import { Modal } from "antd";
 
 type GameFindLetterType = {
   allAlphabet: AlphabetType[] | [];
@@ -13,6 +14,9 @@ type GameFindLetterType = {
   handleCheck: (id: number, letter: string) => void;
   isStartGame: boolean;
   winCollection: string[];
+  isModalOpen: boolean;
+  handleOk: () => void;
+  handleCancel: () => void;
 };
 
 export const GameFindLetter: React.FC<GameFindLetterType> = ({
@@ -23,7 +27,10 @@ export const GameFindLetter: React.FC<GameFindLetterType> = ({
   newGame,
   handleCheck,
   isStartGame,
-  winCollection
+  winCollection,
+  isModalOpen,
+  handleOk,
+  handleCancel
 }) => {
   return (
     <div className="App" disabled={delayClick}>
@@ -48,6 +55,30 @@ export const GameFindLetter: React.FC<GameFindLetterType> = ({
       </div>
 
       <AlphabetTable allAlphabet={allAlphabet} handleCheck={handleCheck} />
+
+      <Modal
+        title="Начинаем игру ?"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>
+          Для поиска выбрана буква -
+          <b>
+            {"letter" in findLetter ? (
+              findLetter.letter
+            ) : (
+              <b>"буква не выбрана"</b>
+            )}
+          </b>
+        </p>
+        <p>Нажми OK для начала игры или Cancel для выбора другой буквы</p>
+        <p>
+          Правила. <br />
+          Тебе будет показано поле из 16 букв, необходимо найти 3 выбранные
+          буквы
+        </p>
+      </Modal>
     </div>
   );
 };

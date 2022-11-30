@@ -20,6 +20,7 @@ export const GameFindLetterContainer: React.FC = () => {
   const [isStartGame, setIaStartGame] = useState(false);
   const [findLetter, setFindLetter] = useState<AlphabetType | {}>({});
   const [winCollection, setWinCollection] = useState<string[] | []>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const newLetter = (item: string): AlphabetType => {
     return {
@@ -120,7 +121,7 @@ export const GameFindLetterContainer: React.FC = () => {
       setDelayClick(false);
       setAllAlphabet((prev) => changeLetterKey(undefined, "isChecked", prev));
     };
-    setTimeout(delay, 2000);
+    setTimeout(delay, 4000);
   };
   useEffect(() => {
     const newAlphabetSet: AlphabetType[] = alphabet.map((item) => {
@@ -129,12 +130,27 @@ export const GameFindLetterContainer: React.FC = () => {
     setAllAlphabet(newAlphabetSet);
   }, []);
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    newGame();
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setFindLetter({});
+  };
+
   const handleCheck = (id: number, letter: string) => {
     new Audio(
       audioList[audioList.findIndex((item) => item.letter === letter)].src
     ).play();
     if (!isStartGame) {
       setFindLetter(allAlphabet.find((item) => item.id === id) ?? {});
+      showModal();
       return;
     }
 
@@ -157,7 +173,7 @@ export const GameFindLetterContainer: React.FC = () => {
       setTimeout(delay, 800);
     }
   };
-  //console.table(allAlphabet);
+
   return winCollection.length !== 3 ? (
     <GameFindLetter
       allAlphabet={allAlphabet}
@@ -168,8 +184,15 @@ export const GameFindLetterContainer: React.FC = () => {
       handleCheck={handleCheck}
       isStartGame={isStartGame}
       winCollection={winCollection}
+      isModalOpen={isModalOpen}
+      handleOk={handleOk}
+      handleCancel={handleCancel}
     />
   ) : (
-    <WinnerPage newGame={newGame} counter={counter} />
+    <WinnerPage
+      newGame={newGame}
+      counter={counter}
+      winCollection={winCollection}
+    />
   );
 };

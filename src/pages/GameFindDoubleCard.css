@@ -107,7 +107,7 @@ div.App[disabled] {
   opacity: 0.9;
 }
 
-svg {
+.no_check > svg {
   width: 110px;
   height: 100px;
 }
