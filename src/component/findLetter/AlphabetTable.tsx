@@ -13,15 +13,15 @@ declare module "react" {
 
 type Tabletype = {
   allAlphabet: AlphabetType[];
-  handleCheck: (id: number, set: number) => void;
+  handleCheck: (id: number, letter: string) => void;
 };
 
 export const AlphabetTable: React.FC<Tabletype> = ({
   allAlphabet,
   handleCheck
 }: Tabletype) => {
-  const handleClick = (id: number, set: number) => {
-    handleCheck(id, set);
+  const handleClick = (id: number, letter: string) => {
+    handleCheck(id, letter);
   };
 
   return (
@@ -29,7 +29,7 @@ export const AlphabetTable: React.FC<Tabletype> = ({
       {allAlphabet.map((card) => (
         <div
           className={!card.isChecked ? "no_check" : "no_check check"}
-          onClick={() => handleClick(card.id, 2)}
+          onClick={() => handleClick(card.id, card.letter)}
           key={Math.random().toString(36).substring(2, 9)}
           disabled={card.disabled}
         >

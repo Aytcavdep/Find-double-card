@@ -1,4 +1,5 @@
-.game_start_rules {
+.game_start_rules,
+.progress {
   display: grid;
   text-align: center;
   border: solid 2px #fff;
@@ -11,4 +12,29 @@
   color: red;
   box-shadow: inset rgba(0, 0, 0, 0.6) 0 -3px 8px,
     inset rgba(252, 255, 255, 0.7) 0 3px 8px, rgba(0, 0, 0, 0.8) 0 3px 8px -3px;
+}
+
+@media (max-width: 400px) {
+  .game_start_rules {
+    font-size: 12px;
+  }
+}
+
+.progress {
+  grid-template-columns: repeat(3, minmax(30px, 1fr));
+  grid-column-gap: 3px;
+  color: black;
+}
+
+.letter_1 {
+  background-color: rgb(223, 235, 65);
+  border-radius: 10px 0 0 10px;
+}
+
+.letter_2 {
+  background-color: rgb(181, 240, 71);
+}
+.letter_3 {
+  background-color: rgb(93, 235, 65);
+  border-radius: 0px 10px 10px 0px;
 }

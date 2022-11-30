@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { GameFindLetter } from "./GameFindLetter";
 import { WinnerPage } from "./WinnerPage";
 import { alphabet } from "../component/findLetter/alphabet";
+import { audioList } from "../audio/audioList";
 
 export type AlphabetType = {
   letter: string;
@@ -14,8 +15,6 @@ export type AlphabetType = {
 
 export const GameFindLetterContainer: React.FC = () => {
   const [allAlphabet, setAllAlphabet] = useState<AlphabetType[] | []>([]);
-  const [setCheck, setSetCheck] = useState<number>(0);
-  const [oldId, setOldId] = useState<number>(-1);
   const [counter, setCounter] = useState(0);
   const [delayClick, setDelayClick] = useState(false);
   const [isStartGame, setIaStartGame] = useState(false);
@@ -130,14 +129,15 @@ export const GameFindLetterContainer: React.FC = () => {
     setAllAlphabet(newAlphabetSet);
   }, []);
 
-  const handleCheck = (id: number, set: number) => {
+  const handleCheck = (id: number, letter: string) => {
+    new Audio(
+      audioList[audioList.findIndex((item) => item.letter === letter)].src
+    ).play();
     if (!isStartGame) {
       setFindLetter(allAlphabet.find((item) => item.id === id) ?? {});
-
       return;
     }
 
-    setCounter(counter + 1);
     setAllAlphabet((prev) => changeLetterKey(id, "isChecked", prev));
     if (
       "id" in findLetter &&
@@ -153,6 +153,7 @@ export const GameFindLetterContainer: React.FC = () => {
         setDelayClick(false);
         setAllAlphabet((prev) => changeLetterKey(id, "isChecked", prev));
       };
+      setCounter(counter + 1);
       setTimeout(delay, 800);
     }
   };
@@ -165,8 +166,10 @@ export const GameFindLetterContainer: React.FC = () => {
       delayClick={delayClick}
       newGame={newGame}
       handleCheck={handleCheck}
+      isStartGame={isStartGame}
+      winCollection={winCollection}
     />
   ) : (
-    <WinnerPage newGame={newGame} />
+    <WinnerPage newGame={newGame} counter={counter} />
   );
 };
