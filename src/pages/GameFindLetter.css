@@ -38,3 +38,15 @@
   background-color: rgb(93, 235, 65);
   border-radius: 0px 10px 10px 0px;
 }
+
+.letter_button {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+@media (max-width: 666px) {
+  .letter_button {
+    font-size: 32px;
+    font-weight: bold;
+  }
+}

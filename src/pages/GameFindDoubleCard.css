@@ -111,3 +111,20 @@ div.App[disabled] {
   width: 110px;
   height: 100px;
 }
+
+@media (max-width: 666px) {
+  .no_check,
+  .check {
+    gap: 5px;
+    height: 75px;
+    width: 75px;
+  }
+
+  .no_check > svg {
+    width: 75px;
+    height: 65px;
+  }
+  #card_back {
+    height: 55px;
+  }
+}

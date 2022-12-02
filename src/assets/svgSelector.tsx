@@ -6,8 +6,8 @@ export const SvgSelector = ({ id }: { id: string }) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           width="px"
-          height="90"
-          viewBox="0 0 71 100"
+          height="px"
+          viewBox="0 0 71 120"
         >
           <defs>
             <filter
@@ -292,7 +292,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="px"
-          height="100"
+          height="px"
           viewBox="0 0 88 99"
         >
           <g>
@@ -435,7 +435,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="px"
-          height="100"
+          height="px"
           viewBox="0 0 83 99"
         >
           <g>
@@ -583,7 +583,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="px"
-          height="100"
+          height="px"
           viewBox="0 0 89 100"
         >
           <g>
@@ -710,7 +710,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           width="px"
-          height="100"
+          height="px"
           viewBox="0 0 109 100"
         >
           <defs>
@@ -897,7 +897,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="px"
-          height="100"
+          height="px"
           viewBox="0 0 84 99"
         >
           <g>
@@ -924,7 +924,7 @@ export const SvgSelector = ({ id }: { id: string }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="px"
-          height="100px"
+          height="px"
           viewBox="0 0 83 99"
         >
           <g>

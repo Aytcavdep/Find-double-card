@@ -33,22 +33,14 @@ export const AlphabetTable: React.FC<Tabletype> = ({
           key={Math.random().toString(36).substring(2, 9)}
           disabled={card.disabled}
         >
-          <svg>
-            {card.isChecked ? (
-              <text
-                textAnchor="middle"
-                fontSize="48px"
-                color="red"
-                fontWeight="bold"
-                x="55"
-                y="65"
-              >
-                {card.letter}
-              </text>
-            ) : (
+          {card.isChecked ? (
+            <div className="letter_button">{card.letter}</div>
+          ) : (
+            <svg>
+              {" "}
               <SvgSelector id={"card_back"} />
-            )}
-          </svg>
+            </svg>
+          )}
         </div>
       ))}
     </div>
